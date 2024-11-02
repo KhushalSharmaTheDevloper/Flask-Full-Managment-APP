@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmation Page</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f2f2f2;
+    }
+    .confirmation-container {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    .confirmation-container h1 {
+      font-size: 24px;
+      color: #4CAF50;
+    }
+    .confirmation-container p {
+      font-size: 16px;
+      color: #333;
+      margin: 15px 0;
+    }
+    .status-form {
+      margin-top: 20px;
+    }
+    .status-form input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="confirmation-container">
+  <h1>Thank you for your purchase!</h1>
+  <p>Your order has been successfully placed. We will notify you once it is shipped.</p>
+
+  <!-- Form to check status -->
+  <div class="status-form">
+    <form action="{{ url_for('check_status') }}" method="post">
+      <input type="text" name="search_number" placeholder="Enter your confirmation number" required>
+      <button type="submit" class="btn">Check Status</button>
+    </form>
+  </div>
+
+  {% if result %}
+  <div class="result">{{ result }}</div>
+  {% endif %}
+
+  <div class="btn-container">
+    <a href="/" class="btn">Go to Homepage</a>
+    <a href="/" class="btn">Continue Shopping</a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("Confirmation page loaded");
+  });
+</script>
+
+</body>
+</html>
