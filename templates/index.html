@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Purchase</title>
+    <style>
+        .price-display {
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+    <script>
+        function updatePrice() {
+            const quantity = document.getElementById('quantity').value;
+            const pricePerItem = 97;
+            const totalPrice = quantity * pricePerItem;
+            document.getElementById('price').innerText = totalPrice ? `₹${totalPrice}` : "₹0";
+        }
+    </script>
+</head>
+<body>
+    <h2>Confirm Purchase</h2>
+    <form method="POST">
+        <label for="username">Enter Name:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="quantity">Enter Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required oninput="updatePrice()">
+
+        
+        <p>Price: <span id="price" class="price-display">₹0</span></p>
+
+        <button type="submit" name="confirm" value="yes">Buy Now</button>
+    </form>
+</body>
+</html>
